@@ -4,7 +4,11 @@ const app = express()
 
 app.use(express.json())
 
-app.use(morgan('tiny'))
+morgan.token('data', function getId (req, res) {
+    return JSON.stringify(req.body)
+})
+
+app.use(morgan(':method :url :response-time :data'))
 
 let persons = [
     { 
@@ -64,8 +68,6 @@ app.post('/api/persons', (request, response) => {
         name: request.body.name,
         number: request.body.number
     }
-    console.log(person)
-
     persons = persons.concat(person)
     response.json(person)
   })
