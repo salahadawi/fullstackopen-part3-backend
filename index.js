@@ -5,6 +5,7 @@ const app = express()
 
 
 app.use(express.json())
+app.use(express.static('build'))
 
 morgan.token('data', function getId (req, res) {
     if (req.method === 'POST')
