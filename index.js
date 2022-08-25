@@ -19,7 +19,6 @@ app.use(cors())
 
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(persons => {
-    console.log(persons)
     response.json(persons)
   })
 })
