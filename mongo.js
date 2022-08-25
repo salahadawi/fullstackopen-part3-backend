@@ -18,9 +18,9 @@ const Person = mongoose.model('Person', personSchema)
 
 mongoose
   .connect(url)
-  .then((result) => {
+  .then(() => {
     if (process.argv.length === 3) {
-      console.log("phonebook:")
+      console.log('phonebook:')
       Person.find({}).then(result => {
         result.forEach(person => {
           console.log(person.name, person.number)
